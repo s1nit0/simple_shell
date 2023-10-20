@@ -16,42 +16,45 @@
 #include "macros.h"
 
 /**
- * struct info - struct with the info of the program
- * @program_name: name of the program
- * @input_line: line of input
- * @command_name: name of the command
- * @exec_counter: number of executions
- * @file_descriptor: file descriptor to be readed
- * @tokens: array of tokens
- * @env: environment variables
- * @alias_list: list of alias
- * Description: struct with the info of the program
-*/
+ * struct info - Struct with the info of the program
+ * @program_name: Name of the program
+ * @input_line: Line of input
+ * @command_name: Name of the command
+ * @exec_counter: Number of executions
+ * @file_descriptor: File descriptor to be read
+ * @tokens: Array of tokens
+ * @env: Environment variables
+ * @alias_list: List of alias
+ *
+ * Description: Struct with the info of the program
+ */
 typedef struct info
 {
-    char *program_name;
-    char *input_line;
-    char *command_name;
-    int exec_counter;
-    int file_descriptor;
-    char **tokens;
-    char **env;
-    char **alias_list;
+	char *program_name;
+	char *input_line;
+	char *command_name;
+	int exec_counter;
+	int file_descriptor;
+	char **tokens;
+	char **env;
+	char **alias_list;
 } data_of_program;
 
 /**
- * struct builtins - struct with the builtins
- * @builtin: name of the builtin
- * @function: function of the builtin
- * Description: struct with the builtins
-*/
+ * struct builtins - Struct with the builtins
+ * @builtin: Name of the builtin
+ * @function: Function of the builtin
+ *
+ * Description: Struct with the builtins
+ */
 typedef struct builtins
 {
-    char *builtin;
-    int (*function)(data_of_program *data);
+	char *builtin;
+	int (*function)(data_of_program *data);
 } builtins;
 
-void inicialize_data(data_of_program *data, int arc, char *argv[], char **env);
+void initialize_data(data_of_program *data,
+		int argc, char *argv[], char **env);
 void prpt_msg(char *prompt, data_of_program *data);
 void ctrl_c(int opr UNUSED);
 int my_get_line(data_of_program *data);
@@ -96,3 +99,4 @@ char *get_alias(data_of_program *data, char *alias);
 int set_alias(char *alias_string, data_of_program *data);
 
 #endif /* SHELL_H */
+
